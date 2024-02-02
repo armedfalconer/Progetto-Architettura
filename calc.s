@@ -124,25 +124,25 @@ firstCheck   ;       condition check of the control bits
              cmp     r3, #0
              bgt     secondCheck
              cmp     r4, #0
-             bgt     firstCase
-             beq     thirdCase
+             bgt     secondCase
+             beq     fourthCase
 
 secondCheck  
              cmp     r4, #0
              bgt     finish
-             beq     secondCase
+             beq     thirdCase
 
-firstCase    ;       first case: first operand < 0, second operand > 0 aka r3 = 0, r4 = 1
+secondCase    ;       first case: first operand < 0, second operand > 0 aka r3 = 0, r4 = 1
              rsb     r10, r10, #0
              sub     r10, r10, #1
              sub     r0, r1, r0
              b       finish
 
-secondCase   ;       second case: first operand > 0, second operand < 0 aka r3 = 1, r4 = 0
+thirdCase   ;       second case: first operand > 0, second operand < 0 aka r3 = 1, r4 = 0
              rsb     r10, r10, #0
              b       finish
 
-thirdCase    ;       third case: first operand < 0, second operand < 0 aka r3 = 0, r4 = 0
+fourthCase    ;       third case: first operand < 0, second operand < 0 aka r3 = 0, r4 = 0
              add     r10, r10, #1
              sub     r0, r1, r0 ; should be -(second operand) - remainder but we changed the sign before
              b       finish
