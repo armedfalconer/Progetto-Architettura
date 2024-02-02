@@ -161,7 +161,10 @@ finish
              mov     r0, #0
              mov     r1, #0
              mov     r2, #0
+             mov     r3, #0
+             mov     r4, #0
              mov     r10, #0
              mov     r11, #0
+             mov     r12, #0
              ;       end of the program
              end
