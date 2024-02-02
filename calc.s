@@ -1,5 +1,5 @@
-operands     dcd     -23, -5 ; operands
-operation    dcd     4 ; 0: exit, 1: sum, 2: subtract, 3: product, 4: division
+operands     dcd     5, 4 ; operands
+operation    dcd     5 ; 0: exit, 1: sum, 2: subtract, 3: product, 4: division
 result       fill    4 ; allocating memory for future result
 rem          fill    4 ; allocating space for the remain
 
@@ -38,6 +38,7 @@ main
              cmp     r2, #4
              beq     division
 
+             b       finish
 
              ;       SUM
 sum          
@@ -100,12 +101,12 @@ division     ;       a = qb + r is the formula of the euclidean division
              cmp     r0, #0 ; comparing first operand with zero
              movgt   r3, #1
              movlt   r3, #0
-             rsblt   r0, r0, #0
+             rsblt   r0, r0, #0 ; abs value of r0
 
              cmp     r1, #0 ; comparing second operand with zero only if the first one is greater than 0
              movgt   r4, #1
              movlt   r4, #0
-             rsblt   r1, r1, #0
+             rsblt   r1, r1, #0 ; abs value of r0
 
              ;       if first operand < second operand skip to the sign check
              cmp     r0, r1
